@@ -15,7 +15,23 @@ def random_word():
 def shannon():
     word = random_word()
     guesses = []
-    print "This word contains", len(word), "letters. \n", len(word) * "_"
+    guessed = False
+
+    print "This word contains", len(word), "letters. \n", len(word) * "_ "
+
+    # TODO: change to guess letters in order
+    while (~guessed):
+        guess = input("Guess a letter").upper()
+        # if guess in guesses:
+        #     print "You already guessed", guess, "!"
+        # elif len(guess) == len(word):
+        #     if guess == word:
+        #         guessed = True
+        #     else:
+        #         guesses.append(guess)
+        # elif len()
+
+
 
 
 shannon()
