@@ -6,43 +6,53 @@ import random
 def random_word():
     """
 
-    :return:
+    :return: string random_word
     """
     words = ['Shakespeare', 'sound', 'and', 'fury']
     return random.choice(words).upper()
 
 def shannon():
     word = random_word()
-    guesses = [] # letters guessed
     tryNum = [] # counter tracker
 
-    progress = len(word) * "_ "
-    print "This word contains", len(word), "letters. \n", progress
+    progress = ""
+    startString = "_ " * len(word)
+    print "This word contains", len(word), "letters. Start guessing! \n"
 
-
-    # TODO: change to guess letters in order
-    for i, char in enumerate(word):
+    # TODO: change to dictionary
+    for i, str in enumerate(word):
         guessNum = 0
         guessed = False
+        guesses = [] # letters guessed
+
         while ~guessed:
-            guess = raw_input("Guess the letters of the word in order \n").upper()
+            guess = raw_input(startString + "\n").upper()
+
             if len(guess) > 1:
                 print "Please enter one letter at a time."
+
             elif len(guess) == 0:
                 print "Please guess one letter"
-            elif ~(guess == char):
+
+            # if valid input, but not the correct letter
+            elif (guess != str):
                 if ~(guess in guesses):
                     guessNum += 1
                     guesses.append(guess)
                     print "Guess again! \nGuess count:", guessNum
+
                 else:
                     print "You already guessed that! Try again"
+
             else: # correct letter guessed
                 guessed = True
-                tryNum.append(guessNum)
+                tryNum.append(guessNum + 1)
 
-                progress[i] = char
-                print "Good guess! \n", progress
+                startString[i] = str
+                print "Good guess! \n", startString, "\n", tryNum
+
+
+
 shannon()
 
 
