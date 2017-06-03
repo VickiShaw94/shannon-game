@@ -4,24 +4,24 @@ import random
 ##TODO: add in phrases/dictionary module of words
 
 def random_word():
+    """
+
+    :return:
+    """
     words = ['Shakespeare', 'sound', 'and', 'fury']
     return random.choice(words).upper()
-
-
-
-
-
 
 def shannon():
     word = random_word()
     guesses = [] # letters guessed
     tryNum = [] # counter tracker
 
-    print "This word contains", len(word), "letters. \n", len(word) * "_ "
+    progress = len(word) * "_ "
+    print "This word contains", len(word), "letters. \n", progress
 
 
     # TODO: change to guess letters in order
-    for letter in word:
+    for i, char in enumerate(word):
         guessNum = 0
         guessed = False
         while ~guessed:
@@ -30,7 +30,7 @@ def shannon():
                 print "Please enter one letter at a time."
             elif len(guess) == 0:
                 print "Please guess one letter"
-            elif ~(guess == letter):
+            elif ~(guess == char):
                 if ~(guess in guesses):
                     guessNum += 1
                     guesses.append(guess)
@@ -41,19 +41,8 @@ def shannon():
                 guessed = True
                 tryNum.append(guessNum)
 
-
-        # if guess in guesses:
-        #     print "You already guessed", guess, "!"
-        # elif len(guess) == len(word):
-        #     if guess == word:
-        #         guessed = True
-        #     else:
-        #         guesses.append(guess)
-        # elif len()
-
-
-
-
+                progress[i] = char
+                print "Good guess! \n", progress
 shannon()
 
 
