@@ -26,8 +26,10 @@ def shannon():
         guessed = False
         while ~guessed:
             guess = raw_input("Guess the letters of the word in order \n").upper()
-            if len(guess) > 1 | len(guess) == 0:
-                print "Invalid length. Please enter one letter."
+            if len(guess) > 1:
+                print "Please enter one letter at a time."
+            elif len(guess) == 0:
+                print "Please guess one letter"
             elif ~(guess == letter):
                 if ~(guess in guesses):
                     guessNum += 1
