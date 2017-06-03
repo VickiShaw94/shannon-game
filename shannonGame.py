@@ -14,14 +14,32 @@ def random_word():
 
 def shannon():
     word = random_word()
-    guesses = []
-    guessed = False
+    guesses = [] # letters guessed
+    tryNum = [] # counter tracker
 
     print "This word contains", len(word), "letters. \n", len(word) * "_ "
 
+
     # TODO: change to guess letters in order
-    while (~guessed):
-        guess = input("Guess a letter").upper()
+    for letter in word:
+        guessNum = 0
+        guessed = False
+        while ~guessed:
+            guess = raw_input("Guess the letters of the word in order \n").upper()
+            if len(guess) > 1 | len(guess) == 0:
+                print "Invalid length. Please enter one letter."
+            elif ~(guess == letter):
+                if ~(guess in guesses):
+                    guessNum += 1
+                    guesses.append(guess)
+                    print "Guess again! \nGuess count:", guessNum
+                else:
+                    print "You already guessed that! Try again"
+            else: # correct letter guessed
+                guessed = True
+                tryNum.append(guessNum)
+
+
         # if guess in guesses:
         #     print "You already guessed", guess, "!"
         # elif len(guess) == len(word):
