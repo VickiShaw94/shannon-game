@@ -10,3 +10,6 @@ single letter. In this game, the player is presented with a series of blanks
 that represent letters or spaces. The player must guess the letters of the
 phrase or word in successive order, with their number of guesses being recorded.
 
+As you guess the letters, do you notice a pattern in the number of guesses?
+
+GUI/desktop app to come.
