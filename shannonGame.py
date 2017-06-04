@@ -30,6 +30,7 @@ def guess_check(word):
         guessed = False
         guesses = [] # letters guessed
 
+        print "\# guessed?", guessed
         while ~guessed:
             print " " .join(progressStr)
             guess = raw_input("\n").upper()
@@ -42,21 +43,23 @@ def guess_check(word):
 
             # if valid input, but not the correct letter
             elif (guess != s):
-                if ~(guess in guesses):
+                if guess not in guesses:
                     guessNum += 1
                     guesses.append(guess)
                     print "Guess again! \nGuess count:", guessNum
+                    print "\#guesses: ", guesses
+                    print s
 
                 else:
                     print "You already guessed that! Try again"
 
             else: # correct letter guessed
-                guessed = True
                 tryNum.append(guessNum + 1)
 
                 progressStr[i] = s
                 print "Good guess! \n" + "".join(map(str, tryNum))
 
+                guessed = True
 
 def shannon():
     word = random_word()
