@@ -12,7 +12,6 @@ def random_word():
     return random.choice(words).upper()
 
 
-
 def guess_check(word):
     """
     iterates through each letter in the word, checks against user prompted guess
