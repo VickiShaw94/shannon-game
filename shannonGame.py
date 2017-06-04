@@ -56,7 +56,7 @@ def guess_check(word):
 
                 progressStr[i] = s
                 print "Good guess! \n" + "".join(map(str, tryNum))
-
+######something something
 
 
 def shannon():
