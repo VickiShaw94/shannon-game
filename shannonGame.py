@@ -18,12 +18,13 @@ def guess_check(word):
     iterates through each letter in the word, checks against user prompted guess
     stores items in a dictionary
     :param word: random word selected to be guessed
-
     """
 
     # initializes empty guess string
-    progressStr = ["_ "] * len(word)
+    progressStr = ["_  "] * len(word)
     tryNum = []
+
+    print " " .join(progressStr)
 
     for i, s in enumerate(word):
         guessNum = 0
@@ -31,8 +32,8 @@ def guess_check(word):
         guesses = [] # letters guessed
 
         while not guessed:
-            print " " .join(progressStr)
             guess = raw_input("\n").upper()
+            print " " .join(progressStr)
 
             if len(guess) > 1:
                 print "Please enter one letter at a time."
@@ -51,12 +52,11 @@ def guess_check(word):
                     print "You already guessed that! Try again"
 
             else: # correct letter guessed
+                guessed = True
                 tryNum.append(guessNum + 1)
-
                 progressStr[i] = s
                 print "Good guess! \n" + ", ".join(map(str, tryNum))
-
-                guessed = True
+                print "  " .join(progressStr)
 
 def shannon():
     word = random_word()
