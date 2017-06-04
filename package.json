@@ -1,22 +1,23 @@
 {
-  "name": "electron-quick-start",
+  "name": "shannon-game",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A game to play the entropy of language",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/vickishaw94/shannon-game",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Python",
+    "game",
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "Vicki Shaw",
+  "dependencies": {
+      "zerorpc": "fyears/zerorpc-node"
+  },
   "devDependencies": {
-    "electron": "~1.6.2"
+    "electron": "^1.4.1",
+    "electron-packager": "^8.5.1"
   }
 }
