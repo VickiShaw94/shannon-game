@@ -30,8 +30,7 @@ def guess_check(word):
         guessed = False
         guesses = [] # letters guessed
 
-        print "\# guessed?", guessed
-        while ~guessed:
+        while not guessed:
             print " " .join(progressStr)
             guess = raw_input("\n").upper()
 
@@ -47,8 +46,6 @@ def guess_check(word):
                     guessNum += 1
                     guesses.append(guess)
                     print "Guess again! \nGuess count:", guessNum
-                    print "\#guesses: ", guesses
-                    print s
 
                 else:
                     print "You already guessed that! Try again"
@@ -57,7 +54,7 @@ def guess_check(word):
                 tryNum.append(guessNum + 1)
 
                 progressStr[i] = s
-                print "Good guess! \n" + "".join(map(str, tryNum))
+                print "Good guess! \n" + ", ".join(map(str, tryNum))
 
                 guessed = True
 
