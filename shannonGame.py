@@ -5,28 +5,34 @@ import random
 
 def random_word():
     """
-
+    randomly selects a word
     :return: string random_word
     """
     words = ['Shakespeare', 'sound', 'and', 'fury']
     return random.choice(words).upper()
 
-def shannon():
-    word = random_word()
-    tryNum = [] # counter tracker
 
-    progress = ""
-    startString = "_ " * len(word)
-    print "This word contains", len(word), "letters. Start guessing! \n"
 
-    # TODO: change to dictionary
-    for i, str in enumerate(word):
+def guess_check(word):
+    """
+    iterates through each letter in the word, checks against user prompted guess
+    stores items in a dictionary
+    :param word: random word selected to be guessed
+
+    """
+
+    # initializes empty guess string
+    progressStr = ["_ "] * len(word)
+    tryNum = []
+
+    for i, s in enumerate(word):
         guessNum = 0
         guessed = False
         guesses = [] # letters guessed
 
         while ~guessed:
-            guess = raw_input(startString + "\n").upper()
+            print " " .join(progressStr)
+            guess = raw_input("\n").upper()
 
             if len(guess) > 1:
                 print "Please enter one letter at a time."
@@ -35,7 +41,7 @@ def shannon():
                 print "Please guess one letter"
 
             # if valid input, but not the correct letter
-            elif (guess != str):
+            elif (guess != s):
                 if ~(guess in guesses):
                     guessNum += 1
                     guesses.append(guess)
@@ -48,9 +54,15 @@ def shannon():
                 guessed = True
                 tryNum.append(guessNum + 1)
 
-                startString[i] = str
-                print "Good guess! \n", startString, "\n", tryNum
+                progressStr[i] = s
+                print "Good guess! \n" + "".join(map(str, tryNum))
 
+
+
+def shannon():
+    word = random_word()
+    print "This word contains", len(word), "letters. Start guessing! \n"
+    guess_check(word)
 
 
 shannon()
