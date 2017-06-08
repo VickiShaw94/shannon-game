@@ -1,20 +1,17 @@
 
 from __future__ import print_function
-from shannonGame import shannon
-import sys
+from shannonGame import shannon as sh
 import zerorpc
 
-
 class Shannon(object):
-    def shannon():
-
+    def shannon(self):
+       return sh()
 
 def parse_port():
     return 4242
 
-
 def main():
-    addr = 'tcp://127.0.0.1:' + parse_port()
+    addr = 'tcp://127.0.0.1:' + str(parse_port())
     s = zerorpc.Server(Shannon())
     s.bind(addr)
     print('start running on {}'.format(addr))
