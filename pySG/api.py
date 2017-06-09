@@ -1,6 +1,7 @@
 
 from __future__ import print_function
 from shannonGame import shannon as sh
+import sys
 import zerorpc
 
 class Shannon(object):
