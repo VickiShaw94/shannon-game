@@ -59,3 +59,36 @@ app.on('activate', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
+
+//spawn Python child process
+
+//initializes Python port and processes
+let pyProc = null
+let pyPort = null
+
+//Sets port
+const selectPort = () => {
+  pyPort = 4242
+  return pyPort
+}
+
+//Creates process
+const createPyProc = () => {
+  let port = '' + selectPort()
+  let script = path.join(__dirname, 'shannon', 'api.py')
+  pyProc = require('child_process').spawn('python', [script, port])
+  if (pyProc != null) {
+    console.log('child process success')
+  }
+}
+
+//Quits when finished with process
+const exitPyProc = () => {
+  pyProc.kill()
+  pyProc = null
+  pyPort = null
+}
+
+//calls when asked to open or quit
+app.on('ready', createPyProc)
+app.on('will-quit', exitPyProc)
