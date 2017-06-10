@@ -73,6 +73,7 @@ const selectPort = () => {
 }
 
 //Creates process
+/*
 const createPyProc = () => {
   let port = '' + selectPort()
   let script = path.join(__dirname, 'shannon', 'api.py')
@@ -81,6 +82,25 @@ const createPyProc = () => {
     console.log('child process success')
   }
 }
+*/
+
+
+const createPyProc = () => {
+  let script = getScriptPath()
+  let port = '' + selectPort()
+
+  if (guessPackaged()) {
+    pyProc = require('child_process').execFile(script, [port])
+  } else {
+    pyProc = require('child_process').spawn('python', [script, port])
+  }
+
+  if (pyProc != null) {
+    //console.log(pyProc)
+    console.log('child process success on port ' + port)
+  }
+}
+
 
 //Quits when finished with process
 const exitPyProc = () => {
@@ -92,7 +112,6 @@ const exitPyProc = () => {
 //calls when asked to open or quit
 app.on('ready', createPyProc)
 app.on('will-quit', exitPyProc)
-
 
 
 const PY_DIST_FOLDER = 'pySGdist'
